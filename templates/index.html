@@ -36,18 +36,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>T-Shirt</td>
-              <td>Pretty t-shirt</td>
-              <td>29</td>
-              <td>10</td>
-            </tr>
-            <tr>
-              <td>Laptop</td>
-              <td>Very fast laptop</td>
-              <td>1999</td>
-              <td>2</td>
-            </tr>
+            {{range .}}
+              <tr>
+                <td>{{.Name}}</td>
+                <td>{{.Description}}</td>
+                <td>{{.Price}}</td>
+                <td>{{.Amount}}</td>
+              </tr>
+            {{end}}
           </tbody>
         </table>
       </div>

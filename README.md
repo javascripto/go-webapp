@@ -49,4 +49,39 @@
   }
   ```
 - Now you can run the application with the following command: `go run main.go`
-  
+
+## Binding data to the template
+
+- You can bind data to the template using the `{{ . }}` tag.
+- Create a new struct type to store Product data.
+- Create a new slice of Product structs to bind to the template.
+- Add a range tag to the template to iterate over the slice of Product structs.
+- Code:
+  ```go
+  type Product struct {
+  	Name        string
+  	Description string
+  	Price       float64
+  	Amount      int
+  }
+  // request handler
+  func index(w http.ResponseWriter, r *http.Request) {
+  	products := []Product{
+  		{Name: "T-shirt", Description: "Blue, really pretty t-shirt", Price: 29, Amount: 10},
+  		{Name: "Laptop", Description: "Very fast laptop", Price: 1999, Amount: 2},
+  		{Name: "Sneakers", Description: "Very cool sneakers", Price: 99, Amount: 5},
+  	}
+  	templates.ExecuteTemplate(w, "Index", products)
+  }
+  ```
+  ```html
+  <!-- Products loop and binding -->
+  {{range .}}
+    <tr>
+      <td>{{.Name}}</td>
+      <td>{{.Description}}</td>
+      <td>{{.Price}}</td>
+      <td>{{.Amount}}</td>
+    </tr>
+  {{end}}
+  ```
