@@ -1,0 +1,76 @@
+{{define "EditProduct"}}
+<!DOCTYPE html>
+<html lang="en">
+{{template "_head"}}
+<body>
+  {{template "_navbar"}}
+
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-5">Edit product</h1>
+        <p class="lead">Insert data to update the product</p>
+      </div>
+  </div>
+  <form method="POST" action="update">
+    <input type="hidden" name="id" value="{{.Id}}">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            value="{{.Name}}"
+            type="text"
+            name="name"
+            class="form-control"
+            autofocus
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input
+            value="{{.Description}}"
+            type="text"
+            name="description"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input
+            value="{{.Price}}"
+            type="number"
+            name="price"
+            class="form-control"
+            step="0.01"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <label for="amount">Amount:</label>
+          <input
+            value="{{.Amount}}"
+            type="number"
+            name="amount"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+    <button type="submit" value="save" class="btn btn-success">Update</button>
+    <a class="btn btn-info" href="/">Go back</a>
+  </form>
+</body>
+</html>
+{{end}}

@@ -11,6 +11,8 @@ func LoadRoutes() {
 	http.HandleFunc("/new", controllers.NewProduct)
 	http.HandleFunc("/insert", controllers.InsertProduct)
 	http.HandleFunc("/delete", controllers.DeleteProduct)
+	http.HandleFunc("/edit", controllers.EditProduct)
+	http.HandleFunc("/update", controllers.UpdateProduct)
 	http.HandleFunc("/favicon.ico", doNothing)
 }
 
