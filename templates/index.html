@@ -33,6 +33,7 @@
               <th>Description</th>
               <th>Price</th>
               <th>Amount</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -42,6 +43,14 @@
                 <td>{{.Description}}</td>
                 <td>{{.Price}}</td>
                 <td>{{.Amount}}</td>
+                <td>
+                  <a
+                    class="btn btn-danger"
+                    href="/delete?id={{.Id}}"
+                    onclick="if (!confirm('Are you sure?')) return false">
+                    Delete
+                  </a>
+                </td>
               </tr>
             {{end}}
           </tbody>

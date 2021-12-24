@@ -36,3 +36,12 @@ func InsertProduct(w http.ResponseWriter, r *http.Request) {
 	}
 	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
+
+func DeleteProduct(w http.ResponseWriter, r *http.Request) {
+	id, err := strconv.Atoi(r.URL.Query().Get("id"))
+	if err != nil {
+		log.Println("Error on converting id to int:", err)
+	}
+	models.DeleteProduct(id)
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
+}
