@@ -1,6 +1,10 @@
 package models
 
-import db "github.com/javascripto/go-webapp/db"
+import (
+	"database/sql"
+
+	db "github.com/javascripto/go-webapp/db"
+)
 
 type Product struct {
 	Id          int
@@ -31,4 +35,21 @@ func GetAllProducts() []Product {
 	}
 
 	return products
+}
+
+func CreateNewProduct(name string, description string, price float64, amount int) (sql.Result, error) {
+	db := db.ConnectToDatabase()
+	defer db.Close()
+	statement, err := db.Prepare(`
+		INSERT INTO products(name, description, price, amount)
+		VALUES($1, $2, $3, $4)
+	`)
+	if err != nil {
+		panic(err.Error())
+	}
+	result, err := statement.Exec(name, description, price, amount)
+	if err != nil {
+		panic(err.Error())
+	}
+	return result, nil
 }

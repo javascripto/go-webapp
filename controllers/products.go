@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"log"
 	"net/http"
+	"strconv"
 	"text/template"
 
 	"github.com/javascripto/go-webapp/models"
@@ -16,4 +18,21 @@ func ListProducts(w http.ResponseWriter, r *http.Request) {
 
 func NewProduct(w http.ResponseWriter, r *http.Request) {
 	templates.ExecuteTemplate(w, "NewProduct", nil)
+}
+
+func InsertProduct(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		name := r.FormValue("name")
+		description := r.FormValue("description")
+		price, err := strconv.ParseFloat(r.FormValue("price"), 64)
+		if err != nil {
+			log.Println("Error on converting price to float64:", err)
+		}
+		amount, err := strconv.Atoi(r.FormValue("amount"))
+		if err != nil {
+			log.Println("Error on converting amount to int:", err)
+		}
+		models.CreateNewProduct(name, description, price, amount)
+	}
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
