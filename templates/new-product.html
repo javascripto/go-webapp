@@ -1,0 +1,70 @@
+{{define "NewProduct"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go Store</title>
+  <link
+    rel="stylesheet"
+    crossorigin="anonymous"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  />
+  <script
+    crossorigin="anonymous"
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM">
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light mb-4">
+    <a class="navbar-brand" href="/">Go store</a>
+  </nav>
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-5">New product</h1>
+        <p class="lead">Insert the details</p>
+      </div>
+  </div>
+  <form method="POST" action="insert">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" name="name" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text" name="description" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="number" name="price" class="form-control" step="0.01">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <label for="amount">Amount:</label>
+          <input type="number" name="amount" class="form-control">
+        </div>
+      </div>
+    </div>
+    <button type="submit" value="save" class="btn btn-success">Save</button>
+    <a class="btn btn-info" href="/">Go back</a>
+  </form>
+</body>
+</html>
+{{end}}

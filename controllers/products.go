@@ -13,3 +13,7 @@ func ListProducts(w http.ResponseWriter, r *http.Request) {
 	products := models.GetAllProducts()
 	templates.ExecuteTemplate(w, "Index", products)
 }
+
+func NewProduct(w http.ResponseWriter, r *http.Request) {
+	templates.ExecuteTemplate(w, "NewProduct", nil)
+}

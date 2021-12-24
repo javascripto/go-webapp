@@ -8,6 +8,7 @@ import (
 
 func LoadRoutes() {
 	http.HandleFunc("/", controllers.ListProducts)
+	http.HandleFunc("/new", controllers.NewProduct)
 	http.HandleFunc("/favicon.ico", doNothing)
 }
 
